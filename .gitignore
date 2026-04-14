@@ -1,0 +1,14 @@
+.DS_Store 
+Thumbs.db
+desktop.ini
+.Spotlight-V100
+*.exe
+*.out 
+*.o
+*.obj
+*.app
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+.env
+.vscode/
