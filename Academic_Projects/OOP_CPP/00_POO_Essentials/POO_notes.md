@@ -19,6 +19,10 @@ The following documentation outlines the foundational architecture of a C++ appl
 * **`<<` (Stream Insertion Operator):** Overloaded operator utilized to pipe data sequentially into the output stream.
 * **`std::endl`:** Formats the layout by inserting a newline character (`\n`) and explicitly triggers a buffer flush, forcing the immediate rendering of data to the console hardware.
 
+### Commenting and Code Organization
+
+* **`Single-line Comments(//)`:** Perfect for brief notes or explanations.
+* **`Multi-line Comments (/**/)`:** Helpful for longer explanations, removing code blocks temporarily, or detailed documentation.
 ---
 
 ## 2. The Compilation Pipeline: Source to Executable
