@@ -1,48 +1,51 @@
 # C++ Core Fundamentals: Execution Lifecycle & Syntax Anatomy
 
-The following documentation outlines the foundational architecture of a C++ application, detailing the exact mechanisms of the compilation pipeline, core syntax execution, and production-level standards.
+The following documentation outlines the foundational architecture of a C++ application, detailing the exact mechanisms of the compilation pipeline, core syntax execution, and runtime system integration.
 
 ---
 
-## 1. Syntax Breakdown
+## 1. Syntax & Subsystem Breakdown
 
 ### Preprocessor Directive (`#include <iostream>`)
-* **Mechanism:** The `#include` directive triggers the preprocessor to perform a literal text substitution, injecting the contents of the `<iostream>` header file into the translation unit before actual compilation.
-* **System Impact:** It grants access to the standard I/O stream architecture, declaring essential objects like `std::cout` and `std::cin` by mapping them to the system's standard output and input file descriptors.
+* **Mechanism:** Triggers the preprocessor to perform literal text substitution, injecting the contents of the `<iostream>` header into the Translation Unit (TU) prior to compilation.
+* **System Impact:** Exposes standard I/O stream objects (`std::cout`, `std::cin`) bound to standard output and input file descriptors (`stdout`/`stdin`).
 
 ### The Entry Point (`int main()`)
-* **Execution:** `int main()` serves as the mandatory runtime entry point for any hosted C++ application. 
-* **OS Interface:** The operating system's loader transfers control to this specific memory address upon invocation. Returning an `int` is a strict POSIX convention where `0` denotes execution success, and any non-zero value communicates specific error codes back to the parent process.
+* **Execution:** Serves as the mandatory runtime entry point for hosted execution environments. 
+* **OS Interface:** The OS loader passes control to this specific memory address upon invocation. Returns an `int` following POSIX conventions (`0` indicates successful execution; non-zero values convey system-specific exit codes to the parent process).
 
-### Output Operations (`std::cout << "..." << std::endl;`)
-* **`std::cout`:** The standard output stream object, operating as an instance of `std::ostream` bound to the standard output buffer.
-* **`<<` (Stream Insertion Operator):** Overloaded operator utilized to pipe data sequentially into the output stream.
-* **`std::endl`:** Formats the layout by inserting a newline character (`\n`) and explicitly triggers a buffer flush, forcing the immediate rendering of data to the console hardware.
+### Output Operations (`std::cout << ...`)
+* **`std::cout`:** Instance of `std::ostream` representing the buffered standard output stream.
+* **`<<` (Stream Insertion Operator):** Overloaded operator routing sequential data into the stream buffer.
+* **`std::endl` vs `\n`:** `std::endl` inserts a newline character and forces an explicit stream buffer flush (`std::flush`). For performance-critical code, `\n` is preferred to avoid redundant hardware I/O bottlenecks.
 
-### Commenting and Code Organization
+### Source Documentation Tokens (Comments)
+* **Single-line (`//`):** Stripped entirely during the preprocessing phase. Used for inline architectural context.
+* **Multi-line (`/* ... */`):** Stripped during preprocessing. *Note: Cannot be nested*, as the first closing delimiter `*/` terminates the comment block regardless of depth.
 
-* **`Single-line Comments(//)`:** Perfect for brief notes or explanations.
-* **`Multi-line Comments (/**/)`:** Helpful for longer explanations, removing code blocks temporarily, or detailed documentation.
 ---
 
 ## 2. The Compilation Pipeline: Source to Executable
 
-The transformation of human-readable C++ code into machine execution follows a strict four-stage pipeline:
+The transformation of human-readable C++ source code into native machine instructions follows a four-stage translation pipeline:
 
-| Phase | Operation | Output / Result |
-| :--- | :--- | :--- |
-| **Preprocessing** | Resolves macro expansions, strips comments, and executes conditional directives (e.g., `#define`, `#include`). | Expanded Source Code |
-| **Compilation** | Syntactically analyzes the code and translates it into architecture-specific assembly or machine code. | Object Files (`.obj` / `.o`) |
-| **Linking** | Resolves external memory addresses, combines object files, and links static libraries. | Binary Executable |
-| **Execution** | The OS loads the binary into memory, allocates stack/heap space, and fires the instruction pointer at `main`. | Active Process |
+| Phase | Subsystem | Operation | Output Artifact |
+| :--- | :--- | :--- | :--- |
+| **Preprocessing** | Preprocessor | Expands macros, substitutes `#include` headers, strips comments, and evaluates conditional directives. | Expanded Source Code (`.i`) |
+| **Compilation** | Compiler Frontend/Backend | Performs lexical analysis, parsing, and translates AST into architecture-specific assembly. | Assembly Code (`.s`) |
+| **Assembly** | Assembler | Translates assembly instructions into machine-code binary instructions. | Object Code (`.o` / `.obj`) |
+| **Linking** | Linker | Resolves external symbols, merges object files, updates relocation tables, and binds static dependencies. | Executable Binary |
+| **Execution** | OS Loader | Maps binary to virtual address space, sets up Stack/Heap regions, and points the Instruction Pointer (`EIP`/`RIP`) to `main`. | Active Process |
 
-### Architecture Reference Implementation
+---
+
+## 3. Baseline Implementation
+
 ```cpp
 #include <iostream>
 
 int main() {
-    // Standard character output stream execution
-    std::cout << "System execution successful." << std::endl;
+    // Direct stream insertion targeting stdout
+    std::cout << "System execution successful.\n";
     return 0;
 }
-```
