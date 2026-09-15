@@ -156,7 +156,11 @@ count **= 2  # count = count ** 2
 
 ## Logical Operators (Boolean Algebra)
 
-Logical operators evaluate Boolean expressions and return `True` or `False`.
+Unlike languages where logical operators strictly return a boolean type (`true`/`false`), Python's `and` and `or` operators use **short-circuit evaluation** and return the **actual operand object** that determined the outcome, not necessarily a `bool`.
+
+In Python, all objects have an inherent truth value:
+* **Falsy values:** `None`, `False`, `0`, `0.0`, `""`, `[]`, `()`, `{}`, `set()`
+* **Truthy values:** Any non-zero number, non-empty sequence, or valid object reference
 
 ### 1. Logical `or`
 Returns `True` if **at least one** operand evaluates to `True`.

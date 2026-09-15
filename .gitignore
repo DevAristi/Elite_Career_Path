@@ -1,15 +1,37 @@
-.DS_Store 
+# Operating System files
+.DS_Store
 Thumbs.db
 desktop.ini
 .Spotlight-V100
+
+# Compiled / Binaries (C/C++)
 *.exe
 *.out 
 *.o
 *.obj
 *.app
+
+# Python artifacts & caches
 __pycache__/
 *.pyc
+*.pyo
+*.pyd
 .ipynb_checkpoints/
+
+# Virtual Environments (Crítico)
+.venv/
+venv/
+env/
+
+# Environment variables & secrets
 .env
+*.env.local
+
+# Editor configuration
 .vscode/
-*.csv
+.idea/
+
+# Data handling
+data/raw/
+data/processed/
+*.sqlite3
