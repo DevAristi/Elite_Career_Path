@@ -1414,71 +1414,70 @@ print(count_characters("hello world"))
 
 ## Reading Standard Input (stdin) and Parsing
 
-In production systems, competitive programming, and automated assessment platforms (e.g., Codeforces, LeetCode command-line runners), input is streamed through the OS file descriptor `0` (**Standard Input / `sys.stdin`**)[cite: 64]. Python abstracts this stream via the built-in `input()` function and the low-level `sys.stdin` file object[cite: 64].
+In production systems, competitive programming, and automated assessment platforms (e.g., Codeforces, LeetCode command-line runners), input is streamed through the OS file descriptor `0` (**Standard Input / `sys.stdin`**). Python abstracts this stream via the built-in `input()` function and the low-level `sys.stdin` file object.
 
 ---
 
 ### Core Mechanics of `input()`
 
-The `input([prompt])` function reads a line from the input stream until it encounters an EOF (End-Of-File) or a newline character (`\n`)[cite: 64].
+The `input([prompt])` function reads a line from the input stream until it encounters an EOF (End-Of-File) or a newline character (`\n`).
 
-* **Type Invariant:** `input()` **strictly returns a string (`str`)**[cite: 64, 65].
+* **Type Invariant:** `input()` **strictly returns a string (`str`)**.
 * **Trailing Delimiter Stripping:** Unlike low-level reads, `input()` automatically strips the trailing newline character (`\n` / `\r\n`) from the returned string.
-* **Flushing Prompts:** When passing a string to `prompt`, Python writes it to `sys.stdout` without an automatic trailing newline, keeping the cursor on the same line for interactive terminal input[cite: 64]. In non-interactive judges (OJ platforms), prompts should be omitted (`input()`) to avoid polluting the output stream[cite: 65].
+* **Flushing Prompts:** When passing a string to `prompt`, Python writes it to `sys.stdout` without an automatic trailing newline, keeping the cursor on the same line for interactive terminal input. In non-interactive judges (OJ platforms), prompts should be omitted (`input()`) to avoid polluting the output stream.
 
 ```python
 def read_and_print_input() -> None:
     # Captures stream input into a dynamic string reference
-    user_data: str = input("Reading one line of text into a string: ")[cite: 64]
-    print(user_data)[cite: 64]
-
+    user_data: str = input("Reading one line of text into a string: ")
+    print(user_data)
 # Simulating multiple sequential reads across lines
-# read_and_print_input()[cite: 64]
-# read_and_print_input()[cite: 64]
+# read_and_print_input()
+# read_and_print_input()
 ```
 
 ---
 
 ### Explicit Type Casting on Stream Data
 
-Because standard input is delivered as serialized text, reading numerical primitives requires explicit parsing via type constructors (`int()`, `float()`)[cite: 65].
+Because standard input is delivered as serialized text, reading numerical primitives requires explicit parsing via type constructors (`int()`, `float()`).
 
-* **Exceptions:** If the stream payload contains non-convertible characters (e.g., whitespace, letters), constructors raise a `ValueError`[cite: 65].
+* **Exceptions:** If the stream payload contains non-convertible characters (e.g., whitespace, letters), constructors raise a `ValueError`.
 * **Whitespace Safety:** Leading and trailing whitespaces are automatically ignored by `int()` and `float()` (e.g., `int(" 42 \n")` correctly evaluates to `42`).
 
 ```python
 def read_integer() -> int:
     # O(K) where K is the number of digits parsed
-    return int(input())[cite: 65]
+    return int(input())
 
 def read_float() -> float:
     # Parses 64-bit IEEE 754 double precision float
-    return float(input())[cite: 65]
+    return float(input())
 ```
 
 ---
 
 ### String Tokenization and Delimiter Parsing
 
-When inputs arrive in batch format on a single line (e.g., comma-separated or space-separated values), the raw text buffer must be split into discrete tokens[cite: 66, 67].
+When inputs arrive in batch format on a single line (e.g., comma-separated or space-separated values), the raw text buffer must be split into discrete tokens.
 
-* **`str.split(sep=None, maxsplit=-1)`:** Splits the string by a specified delimiter substring and returns a dynamic `list[str]`[cite: 66].
+* **`str.split(sep=None, maxsplit=-1)`:** Splits the string by a specified delimiter substring and returns a dynamic `list[str]`.
 * **Memory & Complexity:** Splitting takes **$O(N)$ Time** and allocates **$O(N)$ Space**, where $N$ is the byte length of the input line.
 
 ```python
 # 1. Parsing comma-separated values into integer lists
 def read_integers() -> list[int]:
-    line: str = input()[cite: 66]
-    tokens: list[str] = line.split(",")  # Splits into substring tokens[cite: 66]
+    line: str = input()
+    tokens: list[str] = line.split(",")  # Splits into substring tokens
     
     # List comprehension: idiomatic, optimized in CPython bytecode
     return [int(token) for token in tokens]
 
 # 2. Arithmetic reduction from delimited stream
 def add_two_numbers() -> int:
-    line: str = input()[cite: 67]
-    num1_str, num2_str = line.split(",")  # Direct tuple unpacking[cite: 67]
-    return int(num1_str) + int(num2_str)[cite: 67]
+    line: str = input()
+    num1_str, num2_str = line.split(",")  # Direct tuple unpacking
+    return int(num1_str) + int(num2_str)
 ```
 
 ---
