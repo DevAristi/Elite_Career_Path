@@ -161,7 +161,7 @@ Unlike languages where logical operators strictly return a boolean type (`true`/
 
 In Python, all objects have an inherent truth value:
 * **Falsy values:** `None`, `False`, `0`, `0.0`, `""`, `[]`, `()`, `{}`, `set()`
-* **Truthy values:** Any non-zero number, non-empty sequence, or valid object reference
+* **Truthy values:** Any non-zero number, non-empty sequence, or valid object reference.
 
 ### 1. Logical `or`
 Returns `True` if **at least one** operand evaluates to `True`.
