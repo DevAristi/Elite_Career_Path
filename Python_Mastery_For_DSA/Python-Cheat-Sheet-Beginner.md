@@ -260,7 +260,7 @@ def farewell(name):
 
 farewell("Bob")       # Output: Goodbye, Bob
 farewell("Charlie")   # Output: Goodbye, Charlie
-farewell("NeetCode")  # Output: Goodbye, NeetCode
+farewell("Jeff")  # Output: Goodbye, Jeff
 ```
 
 ---
@@ -311,7 +311,7 @@ def add(x: int, y: int) -> int:
 def greet(name: str) -> None:
     print("Hello, " + name)
 
-lala = greet("NeetCode")  # Output: Hello, NeetCode
+lala = greet("DevAristi")  # Output: Hello, DevAristi
 print(type(lala))         # Output: <class 'NoneType'>
 ```
 
@@ -580,7 +580,7 @@ print(is_truthy(10))         # Output: Truthy
 print(is_truthy(0.0))        # Output: Falsy
 print(is_truthy(10.0))       # Output: Truthy
 print(is_truthy(""))         # Output: Falsy
-print(is_truthy("NeetCode")) # Output: Truthy
+print(is_truthy("Devs")) # Output: Truthy
 
 # Pythonic idiomatic check vs explicit check
 x = 10
@@ -809,8 +809,8 @@ def get_substring(input_string: str, start: int, end: int) -> str:
         return ""
     return input_string[start:end]
 
-print(get_substring("NeetCode", 1, 7))  # Output: eetCod
-print(get_substring("NeetCode", 1, 9))  # Output: "" (Exceeds length 8)
+print(get_substring("DevAristi", 1, 7))  # Output: evAris
+print(get_substring("Football", 1, 9))  # Output: "" (Exceeds length 8)
 ```
 
 #### Omitted Slicing Parameters
@@ -826,8 +826,8 @@ def first_n_characters(s: str, n: int) -> str:
 def last_n_characters(s: str, n: int) -> str:
     return s[-n:]
 
-print(first_n_characters("NeetCode", 3))  # Output: Nee
-print(last_n_characters("NeetCode", 4))   # Output: Code
+print(first_n_characters("Semester_3", 3))  # Output: Sem
+print(last_n_characters("Semester_3", 4))   # Output: er_4
 ```
 
 ---
@@ -849,7 +849,7 @@ print(s[3:0:-1])  # Output: lle (Indices 3, 2, 1 traversed backward)
 def reverse_string(input_string: str) -> str:
     return input_string[::-1]
 
-print(reverse_string("NeetCode"))  # Output: edoCteeN
+print(reverse_string("String"))  # Output: gnirtS
 print(reverse_string("Hello!"))    # Output: !olleH
 ```
 
@@ -872,7 +872,7 @@ def remove_fourth_character(word: str) -> str:
     # Removes index 3 (4th character) by joining preceding and trailing slices
     return word[:3] + word[4:]
 
-print(remove_fourth_character("NeetCode"))  # Output: NeeCode
+print(remove_fourth_character("Google"))  # Output: Goole
 print(remove_fourth_character("Hello"))     # Output: Helo
 
 # Strategy 2: In-place Array Mutation (For complex character replacements)
@@ -902,7 +902,7 @@ def say_goodbye(name: str, hour: int) -> str:
     return f"Goodbye, {name}. See you again at {hour} o'clock."
 
 print(say_goodbye("Bob", 12))       # Output: Goodbye, Bob. See you again at 12 o'clock.
-print(say_goodbye("NeetCode", 9))   # Output: Goodbye, NeetCode. See you again at 9 o'clock.
+print(say_goodbye("Duo", 9))   # Output: Goodbye, Duo. See you again at 9 o'clock.
 ```
 
 ---
