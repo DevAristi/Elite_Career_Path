@@ -1,7 +1,5 @@
 # Python OOP Cheat Sheet
 
----
-
 ## Classes, Objects, and the `self` Binding Mechanism
 
 Python implements **Object-Oriented Programming (OOP)** by treating classes as runtime blueprints that instantiate stateful objects. In CPython, an instance is fundamentally a heap-allocated structure wrapping an internal attribute namespace dictionary (`__dict__`), where methods operate via explicit instance binding passed through the `self` parameter.
