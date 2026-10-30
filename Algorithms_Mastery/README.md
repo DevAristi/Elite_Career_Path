@@ -1,17 +1,28 @@
-# Tech Internship Prep 🚀
+# Algorithms & Data Structures Mastery 🚀
 
-This repository is my dedicated space for mastering **Data Structures and Algorithms (DSA)** in C++. My goal is to build a rock-solid technical foundation for **Big Tech** internship applications and future roles as a **Quant or Data Engineer**.
+Personal repository dedicated to mastering **Data Structures and Algorithms (DSA)** for Big Tech technical interviews and high-performance engineering roles.
 
-## 🛠️ Tech Stack
-- **Language:** C++ (Clang++)
-- **Environment:** VS Code on Apple Silicon (MacBook Air M5)
-- **Version Control:** Git & GitHub
+## 🛠 Tech Stack
+* **Primary Languages:** Python 3, C++ (Clang++)
+* **Platform & Methodologies:** NeetCode Roadmap, LeetCode
+* **Tooling:** VS Code, Git & GitHub
 
-## 📂 Structure
-- `/C++_Fundamentals`: Basic syntax, STL (Vectors, Maps), and initial training scripts.
-- `/Algorithms`: Solutions to problems from platforms like NeetCode and LeetCode (Coming soon).
+## 📂 Repository Structure
+Solutions are classified by algorithmic pattern rather than platform:
 
-## 🚀 How to Run
-To compile and run any `.cpp` file in this repository:
+* `01_Arrays_and_Hashing/` - Hash sets, hash maps, frequency counters, and prefix sums.
+* `02_Two_Pointers/` - In-place array/string traversal and space optimization ($O(1)$ memory).
+* `03_Stack/` - LIFO structures, monotonic stacks, and parentheses matching.
+
+## 📊 Progress Tracker
+
+| # | Problem | Pattern | Difficulty | Time Complexity | Space Complexity | Solution |
+|---|---|---|---|:---:|:---:|:---:|
+| 217 | Contains Duplicate | Arrays & Hashing | Easy | $O(n)$ | $O(n)$ | [Python](01_Arrays_and_Hashing/01_Contains_Duplicate.py) |
+| 242 | Valid Anagram | Arrays & Hashing | Easy | $O(n)$ | $O(1)$ / $O(k)$ | [Python](01_Arrays_and_Hashing/02_Valid_Anagram.py) |
+| 125 | Valid Palindrome | Two Pointers | Easy | $O(n)$ | $O(1)$ | [Python](02_Two_Pointers/02_Valid_Palindrome.py) |
+
+## 🚀 Execution & Testing
+Run any Python solution directly:
 ```bash
-clang++ filename.cpp -o program && ./program
+python3 path/to/solution.py
